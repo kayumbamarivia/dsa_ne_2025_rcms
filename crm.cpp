@@ -3,10 +3,9 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <algorithm>
 #include <limits>
 #include <iomanip>
-#include <sstream>
+#include <climits>
 
 using namespace std;
 
@@ -335,7 +334,7 @@ public:
         for (size_t i = 0; i < cities.size(); i++) {
             cout << setw(10) << cities[i];
             for (size_t j = 0; j < cities.size(); j++) {
-                cout << setw(10) << roadMatrix[i+1][j+1];
+                cout << setw(10) << (roadMatrix[i+1][j+1] == 1 ? "1" : "0");
                 if (roadMatrix[i+1][j+1] == 1) roadCount++;
             }
             cout << endl;
@@ -360,8 +359,12 @@ public:
         for (size_t i = 0; i < cities.size(); i++) {
             cout << setw(10) << cities[i];
             for (size_t j = 0; j < cities.size(); j++) {
-                cout << setw(10) << fixed << setprecision(2) << budgetMatrix[i+1][j+1];
-                if (budgetMatrix[i+1][j+1] > 0) budgetCount++;
+                if (roadMatrix[i+1][j+1] == 1) {
+                    cout << setw(10) << fixed << setprecision(2) << budgetMatrix[i+1][j+1];
+                    if (budgetMatrix[i+1][j+1] > 0) budgetCount++;
+                } else {
+                    cout << setw(10) << "0.00";
+                }
             }
             cout << endl;
         }

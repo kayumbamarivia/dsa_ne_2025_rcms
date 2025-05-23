@@ -1,0 +1,7 @@
+Index	City Name
+----------------
+1	Kigali
+2	Huye
+3	Nyanza
+4	Gisagara
+5	Ruhango
